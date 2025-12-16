@@ -1,0 +1,11 @@
+[build]
+builder = "nixpacks"
+watchPatterns = ["leadscraper/**"]
+
+[build.nixpacks]
+providers = ["python"]
+
+[deploy]
+startCommand = "cd leadscraper && uvicorn src.main:app --host 0.0.0.0 --port $PORT"
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 10
