@@ -1,3 +1,4 @@
+import os
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -25,9 +26,20 @@ app = FastAPI(
 )
 
 # CORS configuratie voor frontend
+# In productie: voeg je Vercel URL toe
+allowed_origins = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+]
+
+# Voeg productie frontend URL toe indien aanwezig
+frontend_url = os.getenv("FRONTEND_URL")
+if frontend_url:
+    allowed_origins.append(frontend_url)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

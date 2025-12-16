@@ -15,8 +15,8 @@ class Settings(BaseSettings):
     apify_token: str = ""
     anthropic_api_key: str = ""
 
-    # Database
-    database_path: str = "data/leads.db"
+    # Database - use /data for Railway volume persistence
+    database_path: str = "/data/leads.db" if Path("/data").exists() else "data/leads.db"
 
     # Claude settings
     claude_model: str = "claude-3-5-haiku-20241022"

@@ -1,7 +1,6 @@
 import { useState, useCallback } from 'react';
 import type { ScrapeRequest, ScrapeResponse } from '../types/lead';
-
-const API_BASE = '/api';
+import { API_BASE } from '../config';
 
 export function useScrape() {
   const [loading, setLoading] = useState(false);

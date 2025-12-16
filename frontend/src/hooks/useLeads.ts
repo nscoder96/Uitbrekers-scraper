@@ -1,7 +1,6 @@
 import { useState, useCallback } from 'react';
 import type { Lead, LeadsResponse, LeadFilters, CallStatus } from '../types/lead';
-
-const API_BASE = '/api';
+import { API_BASE } from '../config';
 
 export function useLeads() {
   const [leads, setLeads] = useState<Lead[]>([]);
