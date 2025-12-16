@@ -21,6 +21,13 @@ function App() {
   const [showCallMode, setShowCallMode] = useState(false);
   const [callModeLeads, setCallModeLeads] = useState<Lead[]>([]);
 
+  // Fetch leads on mount and when filters change (must be before any conditional returns!)
+  useEffect(() => {
+    if (isLoggedIn) {
+      fetchLeads(filters);
+    }
+  }, [fetchLeads, filters, isLoggedIn]);
+
   const handleLogout = () => {
     localStorage.removeItem('isLoggedIn');
     setIsLoggedIn(false);
@@ -30,11 +37,6 @@ function App() {
   if (!isLoggedIn) {
     return <Login onLogin={() => setIsLoggedIn(true)} />;
   }
-
-  // Fetch leads on mount and when filters change
-  useEffect(() => {
-    fetchLeads(filters);
-  }, [fetchLeads, filters]);
 
   const handleScrape = async (
     searchTerm: string,
