@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/callmode.tsx","./src/components/filterpanel.tsx","./src/components/leadstable.tsx","./src/components/scrapeform.tsx","./src/hooks/useleads.ts","./src/hooks/usescrape.ts","./src/types/lead.ts"],"version":"5.6.3"}
